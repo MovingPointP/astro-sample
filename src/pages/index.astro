@@ -4,12 +4,14 @@ import Recommend from "../components/Recommend.astro";
 
 import { getNewArrivals } from "../lib/getNewArrivals";
 
+import Search from "./search.astro";
+
 const newArrivals = await getNewArrivals();
 ---
 
 <Layout title="Top - Astro">
   <main>
-    
+    <Search />
     <!-- New Arrival Section -->
     <div class="bg-white">
       <div
