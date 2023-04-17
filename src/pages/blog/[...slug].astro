@@ -1,0 +1,14 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { getEntryBySlug, CollectionEntry } from "astro:content";
+// 1. リクエストから　URL　の固有識別子を取得します
+const { slug } = Astro.params as { slug: string };
+// 2. getEntryBySlug を利用して、コンテンツをキー（固有識別子）を指定して取得します
+const entry = (await getEntryBySlug("blog", slug)) as CollectionEntry<"blog">;
+// 3. レンダリングしたコンテンツを取得して、テンプレートに記載します
+const { Content } = await entry.render();
+---
+
+<ArticleLayout header={entry.data} meta={entry.data}>
+  <Content />
+</ArticleLayout>
